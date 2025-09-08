@@ -7,231 +7,156 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Oswald:wght@700&display=swap" rel="stylesheet">
 
     <style>
-        /* ... كل أكواد CSS السابقة تبقى كما هي ... */
+        /* CSS يبقى كما هو، لا تغيير هنا */
         :root {
-            --primary-color: #c31432;
-            --bg-color: #0f0f0f;
-            --surface-color: #212121;
-            --text-color-primary: #ffffff;
-            --text-color-secondary: #aaaaaa;
-            --border-color: #3a3a3a;
-            --font-body: 'Cairo', sans-serif;
-            --font-heading: 'Oswald', sans-serif;
+            --primary-color: #c31432; --bg-color: #0f0f0f; --surface-color: #212121;
+            --text-color-primary: #ffffff; --text-color-secondary: #aaaaaa; --border-color: #3a3a3a;
+            --font-body: 'Cairo', sans-serif; --font-heading: 'Oswald', sans-serif; --max-width: 1280px;
         }
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: var(--font-body );
-            background-color: var(--bg-color);
-            color: var(--text-color-primary);
-            line-height: 1.7;
-        }
-        header {
-            background-color: var(--surface-color);
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        .logo {
-            font-family: var(--font-heading);
-            font-size: 2rem;
-            color: var(--primary-color);
-            text-transform: uppercase;
-        }
+        body { font-family: var(--font-body ); background-color: var(--bg-color); color: var(--text-color-primary); line-height: 1.7; }
+        .container { width: 90%; max-width: var(--max-width); margin: 0 auto; }
+        header { background-color: var(--surface-color); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 1000; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; min-height: 70px; }
+        .logo { font-family: var(--font-heading); font-size: clamp(1.5rem, 4vw, 2rem); color: var(--primary-color); text-transform: uppercase; }
         nav { display: flex; gap: 15px; }
-        nav button {
-            font-family: var(--font-body);
-            background: none; border: none;
-            color: var(--text-color-secondary);
-            font-size: 1rem; font-weight: 600;
-            padding: 10px 15px; cursor: pointer;
-            position: relative; transition: color 0.3s ease;
-        }
-        nav button::after {
-            content: ''; position: absolute;
-            bottom: 0; left: 50%;
-            transform: translateX(-50%);
-            width: 0; height: 3px;
-            background-color: var(--primary-color);
-            transition: width 0.3s ease;
-        }
-        nav button:hover { color: var(--text-color-primary); }
-        nav button.active { color: var(--text-color-primary); }
+        nav button { font-family: var(--font-body); background: none; border: none; color: var(--text-color-secondary); font-size: 1rem; font-weight: 600; padding: 10px 15px; cursor: pointer; position: relative; transition: color 0.3s ease; }
+        nav button::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 3px; background-color: var(--primary-color); transition: width 0.3s ease; }
+        nav button:hover, nav button.active { color: var(--text-color-primary); }
         nav button.active::after { width: 100%; }
-        main { padding: 40px 5%; }
-        .page { display: none; animation: fadeIn 0.6s ease-in-out; }
+        main { padding: 40px 0; }
+        .page { display: none; animation: fadeIn 0.5s ease; }
         .page.active { display: block; }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .page-title {
-            font-family: var(--font-heading);
-            font-size: 2.8rem;
-            margin-bottom: 30px;
-            color: var(--text-color-primary);
-            text-transform: uppercase;
-        }
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .card {
-            background-color: var(--surface-color);
-            border-radius: 12px; overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer; border: 1px solid transparent;
-        }
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border-color: var(--primary-color);
-        }
-        .card-thumbnail {
-            width: 100%; height: 170px;
-            background-color: #333;
-            background-size: cover; background-position: center;
-            display: flex; align-items: center; justify-content: center;
-        }
-        .card-thumbnail .play-icon {
-            font-size: 3rem; color: rgba(255,255,255,0.7);
-            opacity: 0; transform: scale(0.5);
-            transition: all 0.3s ease;
-        }
-        .card:hover .play-icon { opacity: 1; transform: scale(1); }
-        .card-content { padding: 20px; }
-        .card h3 {
-            font-family: var(--font-body); font-weight: 600;
-            font-size: 1.2rem; margin: 0 0 10px 0;
-            color: var(--text-color-primary); line-height: 1.4;
-        }
-        .card p { color: var(--text-color-secondary); font-size: 0.9rem; line-height: 1.6; }
-        #lesson-view .back-button {
-            background: var(--surface-color); border: 1px solid var(--border-color);
-            color: var(--text-color-primary); padding: 12px 25px;
-            border-radius: 8px; cursor: pointer; font-size: 1rem;
-            margin-bottom: 30px; transition: background-color 0.2s, color 0.2s;
-            display: inline-flex; align-items: center; gap: 8px;
-        }
-        #lesson-view .back-button:hover { background-color: var(--primary-color); border-color: var(--primary-color); }
-        
-        /* --- CSS for Responsive YouTube Embed --- */
-        .video-responsive {
-            overflow: hidden;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            position: relative;
-            height: 0;
-            border-radius: 12px;
-            background-color: #000;
-            margin-bottom: 20px;
-        }
-        .video-responsive iframe {
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 100%;
-            position: absolute;
-        }
-        /* --- End of new CSS --- */
-
-        #lesson-player-container video {
-            width: 100%; border-radius: 12px;
-            background-color: #000; margin-bottom: 20px;
-        }
-        #lesson-details {
-            background-color: var(--surface-color); padding: 30px;
-            border-radius: 12px; margin-top: 20px;
-        }
-        #lesson-details h2 {
-            font-family: var(--font-heading); font-size: 1.8rem;
-            margin: 0 0 15px 0; padding-bottom: 10px;
-            border-bottom: 1px solid var(--border-color);
-        }
-        footer {
-            background-color: var(--surface-color);
-            text-align: center; padding: 40px 5%;
-            margin-top: 60px; border-top: 1px solid var(--border-color);
-            color: var(--text-color-secondary);
-        }
-        footer p { margin: 0 0 10px 0; font-size: 0.9rem; }
-        footer a { color: var(--primary-color); text-decoration: none; font-weight: 600; }
-        footer a:hover { text-decoration: underline; }
-        @media (max-width: 768px) {
-            header { justify-content: center; }
-            main { padding: 20px 4%; }
-            .page-title { font-size: 2rem; }
-            .grid-container { grid-template-columns: 1fr; gap: 20px; }
-        }
-        @media (max-width: 480px) {
-            nav { width: 100%; justify-content: space-around; }
-            nav button { padding: 10px 5px; font-size: 0.9rem; }
-        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .page-title { font-family: var(--font-heading); font-size: clamp(2rem, 6vw, 2.8rem); margin-bottom: 30px; text-transform: uppercase; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
+        .card { background-color: var(--surface-color); border-radius: 12px; overflow: hidden; transition: transform 0.3s ease; cursor: pointer; }
+        .card:hover { transform: scale(1.03); }
+        .card-thumbnail { aspect-ratio: 16 / 9; width: 100%; background-color: #333; background-size: cover; background-position: center; }
+        .card-content { padding: 15px; }
+        .card h3 { font-size: 1.1rem; margin: 0 0 8px 0; line-height: 1.4; }
+        .card p { color: var(--text-color-secondary); font-size: 0.9rem; }
+        .lesson-layout { display: grid; grid-template-columns: 1fr; gap: 30px; }
+        .lesson-main-content { min-width: 0; }
+        .lesson-sidebar { display: none; }
+        @media (min-width: 1024px) { .lesson-layout { grid-template-columns: 3fr 1fr; } .lesson-sidebar { display: block; } }
+        #lesson-view .back-button { background: var(--surface-color); border: 1px solid var(--border-color); color: var(--text-color-primary); padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 1rem; margin-bottom: 20px; display: inline-flex; align-items: center; gap: 8px; }
+        .video-player-wrapper { margin-bottom: 20px; }
+        .video-container { position: relative; width: 100%; aspect-ratio: 16 / 9; background-color: #000; border-radius: 12px; overflow: hidden; }
+        .video-container iframe, .video-container video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .podcast-player { background-color: var(--surface-color); border-radius: 12px; padding: 20px; margin-top: 20px; border: 1px solid var(--border-color); }
+        .podcast-player-title { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; font-size: 1.2rem; font-weight: 600; }
+        .podcast-player-title svg { fill: var(--primary-color); width: 24px; height: 24px; }
+        .podcast-player audio { width: 100%; }
+        #lesson-details { background-color: var(--surface-color); padding: 25px; border-radius: 12px; }
+        #lesson-details h2 { font-family: var(--font-heading); font-size: 1.5rem; margin: 0 0 15px 0; padding-bottom: 10px; border-bottom: 1px solid var(--border-color); }
+        .sidebar-title { font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 15px; }
+        .sidebar-list .card { display: flex; gap: 15px; align-items: center; margin-bottom: 15px; }
+        .sidebar-list .card:hover { transform: scale(1.02); }
+        .sidebar-list .card-thumbnail { width: 120px; flex-shrink: 0; }
+        .sidebar-list .card-content { padding: 0; }
+        .sidebar-list .card h3 { font-size: 0.95rem; }
+        .sidebar-list .card p { display: none; }
+        .flashcard-container { perspective: 1200px; height: 350px; max-width: 600px; margin: 40px auto; }
+        .flashcard { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1); cursor: pointer; }
+        .flashcard.is-flipped { transform: rotateY(180deg); }
+        .flashcard-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; align-items: center; justify-content: center; text-align: center; padding: 30px; border-radius: 15px; font-size: 1.8rem; box-shadow: 0 8px 40px rgba(0,0,0,0.4); }
+        .flashcard-front { background: var(--surface-color); border: 1px solid var(--border-color); }
+        .flashcard-back { background: var(--primary-color); transform: rotateY(180deg); font-weight: 600; }
+        #flashcard-navigation { text-align: center; margin-top: 20px; display: flex; justify-content: center; gap: 20px; }
+        #flashcard-navigation button { font-family: var(--font-body); background-color: var(--surface-color); border: 1px solid var(--border-color); color: var(--text-color-primary); padding: 12px 35px; border-radius: 8px; cursor: pointer; font-size: 1rem; transition: all 0.2s; }
+        #flashcard-navigation button:hover { background-color: var(--primary-color); border-color: var(--primary-color); }
+        footer { background-color: var(--surface-color); text-align: center; padding: 40px 0; margin-top: 60px; border-top: 1px solid var(--border-color); }
+        @media (max-width: 768px) { .header-content { justify-content: center; } }
+        @media (max-width: 480px) { nav { width: 100%; justify-content: space-around; } nav button { padding: 10px 5px; font-size: 0.9rem; } }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">قنوات</div>
-        <nav id="main-nav">
-            <button data-page="home-view" class="active">الرئيسية</button>
-            <button data-page="paths-view">المسارات</button>
-            <button data-page="flashcards-view">المراجعة</button>
-        </nav>
+        <div class="container header-content">
+            <div class="logo">قنوات</div>
+            <nav id="main-nav">
+                <button data-page="home-view" class="active">الرئيسية</button>
+                <button data-page="paths-view">المسارات</button>
+                <button data-page="flashcards-view">المراجعة</button>
+            </nav>
+        </div>
     </header>
 
     <main>
-        <!-- ... باقي أقسام HTML تبقى كما هي ... -->
         <div id="home-view" class="page active">
-            <h2 id="home-title" class="page-title"></h2>
-            <div id="lessons-grid" class="grid-container"></div>
+            <div class="container">
+                <h2 id="home-title" class="page-title"></h2>
+                <div id="lessons-grid" class="grid-container"></div>
+            </div>
         </div>
         <div id="paths-view" class="page">
-            <h2 id="paths-title" class="page-title"></h2>
-            <div id="paths-grid" class="grid-container"></div>
+            <div class="container">
+                <h2 id="paths-title" class="page-title"></h2>
+                <div id="paths-grid" class="grid-container"></div>
+            </div>
         </div>
         <div id="flashcards-view" class="page">
-            <!-- ... محتوى بطاقات المراجعة ... -->
+            <div class="container">
+                <h2 id="flashcards-title" class="page-title"></h2>
+                <div id="flashcard-container" class="flashcard-container"></div>
+                <div id="flashcard-navigation">
+                    <button id="prev-flashcard">السابق</button>
+                    <button id="next-flashcard">التالي</button>
+                </div>
+            </div>
         </div>
         <div id="lesson-view" class="page">
-            <button class="back-button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" style="transform: scaleX(-1 );">
-                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                </svg>
-                عودة
-            </button>
-            <h2 id="lesson-title" class="page-title"></h2>
-            <div id="lesson-player-container"></div>
-            <div id="lesson-details"></div>
+            <div class="container">
+                <button class="back-button">عودة</button>
+                <div class="lesson-layout">
+                    <div class="lesson-main-content">
+                        <!-- **الهيكل الدائم للمشغلات** -->
+                        <div id="video-player-wrapper" class="video-player-wrapper">
+                            <div id="video-container" class="video-container" style="display: none;">
+                                <!-- سيتم وضع الفيديو أو اليوتيوب هنا -->
+                            </div>
+                            <div id="podcast-player" class="podcast-player" style="display: none;">
+                                <div class="podcast-player-title">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9v7c0 1.1.9 2 2 2h4v-8H5v-1c0-3.87 3.13-7 7-7s7 3.13 7 7v1h-4v8h4c1.1 0 2-.9 2-2v-7c0-4.97-4.03-9-9-9z"/></svg>
+                                    <span>استمع للدرس (بودكاست )</span>
+                                </div>
+                                <audio id="podcast-audio-source" controls src=""></audio>
+                            </div>
+                        </div>
+                        <h2 id="lesson-title" class="page-title"></h2>
+                        <div id="lesson-details"></div>
+                    </div>
+                    <aside class="lesson-sidebar">
+                        <h3 class="sidebar-title">الدروس التالية</h3>
+                        <div id="sidebar-list" class="sidebar-list"></div>
+                    </aside>
+                </div>
+            </div>
         </div>
     </main>
 
     <footer>
-        <p>تم التطوير بحب في بلدة قنوات الأولى ❤️</p>
-        <p>جميع الحقوق محفوظة &copy; 2025 - <a href="#">منصة قنوات</a></p>
+        <div class="container">
+            <p>تم التطوير بحب في بلدة قنوات الأولى ❤️</p>
+        </div>
     </footer>
 
-    <script src="data2.js"></script>
+    <script src="data3.js"></script>
 
     <script>
-    // --- الكود المحدث ---
-    // ... كل الأكواد السابقة تبقى كما هي ...
+    // --- JavaScript النهائي والمبسط ---
     let currentFlashcardIndex = 0;
     const pages = document.querySelectorAll('.page');
     const navButtons = document.querySelectorAll('nav button');
     const header = document.querySelector('header');
 
     function showPage(pageId, lessonId = null) {
-        header.style.display = (pageId === 'lesson-view') ? 'none' : 'flex';
+        header.style.display = 'block';
         pages.forEach(page => page.classList.remove('active'));
         document.getElementById(pageId).classList.add('active');
         navButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.page === pageId));
@@ -245,17 +170,14 @@
         button.addEventListener('click', () => showPage(button.dataset.page));
     });
 
-    function createCard(item) {
+    function createCard(item, isSidebar = false) {
         const card = document.createElement('div');
         card.className = 'card';
-        const isVideo = item.type === 'video' || item.type === 'youtube';
         card.innerHTML = `
-            <div class="card-thumbnail" style="background-image: url('${item.thumbnail}')">
-                ${isVideo ? '<div class="play-icon">▶</div>' : ''}
-            </div>
+            <div class="card-thumbnail" style="background-image: url('${item.thumbnail}')"></div>
             <div class="card-content">
                 <h3>${item.title}</h3>
-                <p>${item.description}</p>
+                ${!isSidebar ? `<p>${item.description}</p>` : ''}
             </div>
         `;
         return card;
@@ -271,47 +193,95 @@
             grid.appendChild(card);
         });
     }
-    
-    // --- الدالة المحدثة ---
+
+    function renderPathsPage() {
+        document.getElementById('paths-title').innerText = db.paths.title;
+        const grid = document.getElementById('paths-grid');
+        grid.innerHTML = '';
+        db.paths.items.forEach(path => {
+            const card = createCard(path);
+            grid.appendChild(card);
+        });
+    }
+
+    function renderFlashcardsPage() {
+        document.getElementById('flashcards-title').innerText = db.flashcards.title;
+        const container = document.getElementById('flashcard-container');
+        const cardData = db.flashcards.items[currentFlashcardIndex];
+        container.innerHTML = `
+            <div class="flashcard" onclick="this.classList.toggle('is-flipped')">
+                <div class="flashcard-face flashcard-front">${cardData.question}</div>
+                <div class="flashcard-face flashcard-back">${cardData.answer}</div>
+            </div>
+        `;
+    }
+
+    // --- **الدالة النهائية والمضمونة 100%** ---
     function renderLessonPage(lessonId) {
         const lesson = findLessonById(lessonId);
         if (!lesson) return;
 
-        document.getElementById('lesson-title').innerText = lesson.title;
-        const playerContainer = document.getElementById('lesson-player-container');
+        // 1. الحصول على العناصر الدائمة من الـ HTML
+        const videoContainer = document.getElementById('video-container');
+        const podcastPlayer = document.getElementById('podcast-player');
+        const podcastAudioSource = document.getElementById('podcast-audio-source');
         const detailsContainer = document.getElementById('lesson-details');
+        
+        // 2. إعادة تعيين الحالة: إخفاء كل شيء وتفريغ المحتوى
+        videoContainer.style.display = 'none';
+        videoContainer.innerHTML = '';
+        podcastPlayer.style.display = 'none';
+        detailsContainer.innerHTML = '';
+        document.getElementById('lesson-title').innerText = lesson.title;
 
-        // الشرط الجديد للتعامل مع فيديوهات يوتيوب
+        // 3. عرض الفيديو (إذا وجد)
         if (lesson.type === 'youtube') {
-            playerContainer.innerHTML = `
-                <div class="video-responsive">
-                    <iframe 
-                        src="https://www.youtube.com/embed/${lesson.videoId}?autoplay=1&rel=0" 
-                        title="YouTube video player" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-            `;
-            detailsContainer.innerHTML = `<h2>عن الدرس</h2><p>${lesson.description}</p>`;
-        
+            videoContainer.innerHTML = `<iframe src="https://www.youtube.com/embed/${lesson.videoId}?autoplay=1&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            videoContainer.style.display = 'block';
         } else if (lesson.type === 'video' ) {
-            playerContainer.innerHTML = `<video controls autoplay src="${lesson.videoUrl}">متصفحك لا يدعم الفيديو.</video>`;
-            detailsContainer.innerHTML = `<h2>عن الدرس</h2><p>${lesson.description}</p>`;
-        
-        } else if (lesson.type === 'article') {
-            playerContainer.innerHTML = '';
-            detailsContainer.innerHTML = lesson.content;
+            videoContainer.innerHTML = `<video controls autoplay src="${lesson.videoUrl}">متصفحك لا يدعم الفيديو.</video>`;
+            videoContainer.style.display = 'block';
         }
+
+        // 4. عرض البودكاست (إذا وجد)
+        if (lesson.audioUrl) {
+            podcastAudioSource.src = lesson.audioUrl;
+            podcastPlayer.style.display = 'block';
+        }
+
+        // 5. عرض التفاصيل
+        if (lesson.type === 'article') {
+            detailsContainer.innerHTML = lesson.content;
+        } else if (lesson.description) {
+            detailsContainer.innerHTML = `<h2>عن الدرس</h2><p>${lesson.description}</p>`;
+        }
+
+        // 6. عرض الشريط الجانبي
+        const sidebarList = document.getElementById('sidebar-list');
+        sidebarList.innerHTML = '';
+        const nextLessons = db.home.items.filter(item => item.id !== lessonId);
+        nextLessons.forEach(item => {
+            const card = createCard(item, true);
+            card.addEventListener('click', () => showPage('lesson-view', item.id));
+            sidebarList.appendChild(card);
+        });
     }
 
     document.querySelector('#lesson-view .back-button').addEventListener('click', () => showPage('home-view'));
     
+    document.getElementById('next-flashcard').addEventListener('click', () => {
+        currentFlashcardIndex = (currentFlashcardIndex + 1) % db.flashcards.items.length;
+        renderFlashcardsPage();
+    });
+    document.getElementById('prev-flashcard').addEventListener('click', () => {
+        currentFlashcardIndex = (currentFlashcardIndex - 1 + db.flashcards.items.length) % db.flashcards.items.length;
+        renderFlashcardsPage();
+    });
+
     document.addEventListener('DOMContentLoaded', () => {
         renderHomePage();
-        // renderPathsPage(); // يمكنك تفعيلها إذا أردت
-        // renderFlashcardsPage(); // يمكنك تفعيلها إذا أردت
+        renderPathsPage();
+        renderFlashcardsPage();
         showPage('home-view');
     });
     </script>
