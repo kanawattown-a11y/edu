@@ -10,7 +10,7 @@ const db = {
   "type": "video",
   "description": "شرح تمهيدي ومبسط لمفهوم تكنولوجيا المعلومات وأساسياتها، من تقديم وتحرير شهد أبو سعد، لاستكشاف هذا المجال الحيوي.",
   "thumbnail": "https://i.ytimg.com/vi/OSi-AifK3TE/maxresdefault.jpg",
-  "videoId": "OSi-AifK3TE",
+  "videoId": "tlkgbwmN9mQ",
   "content": `
     <h1>مقدمة في تكنولوجيا المعلومات</h1>
     <p>هل تساءلت يومًا ما هي <strong>تكنولوجيا المعلومات (IT )</strong> وكيف أصبحت جزءًا أساسيًا من حياتنا اليومية وأعمالنا؟ في هذا الفيديو، تقدم لنا <strong>شهد أبو سعد</strong> مدخلاً شاملاً ومبسطًا لهذا العالم المثير.</p>
@@ -62,4 +62,5 @@ const db = {
 function findLessonById(id ) {
     return db.home.items.find(item => item.id === id);
 }
+
 
