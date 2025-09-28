@@ -27,7 +27,20 @@ const db = {
   "audioUrl": "https://raw.githubusercontent.com/kanawattown-a11y/edu/3b9f4b3d8c837a4834167dae0f2ad6baaea06e2a/S2.mp3",
 
   "content": "<h1>الإنترنت: شو هو وليش صار أساسي بحياتنا؟</h1><p>في هذه الحلقة الثانية من سلسلة <strong>مقدمة في تكنولوجيا المعلومات</strong>، تقدم لنا <strong>شهد أبو سعد</strong> شرحًا مبسطًا لمفهوم الإنترنت وكيف تحول إلى جزء لا يتجزأ من حياتنا.</p><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/jHaPTobQCsI\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe><p>يركز الفيديو على تعريف الإنترنت كشبكة عالمية ضخمة تربط بين ملايين الأجهزة حول العالم، مما يسمح بتبادل المعلومات والاتصال الفوري.</p><h2>ماذا ستتعلم في هذا الفيديو؟</h2><ul><li><strong>ما هو الإنترنت؟</strong> وكيف يعمل كشبكة مترابطة من الحواسيب والخوادم.</li><li><strong>أهمية الإنترنت:</strong> دوره في التعليم، العمل، والتواصل الاجتماعي.</li><li><strong>كيف غيّر حياتنا:</strong> من التسوق الإلكتروني إلى وسائل التواصل والمنصات الرقمية.</li><li><strong>لمحة عن المستقبل:</strong> كيف سيتطور الإنترنت ليؤثر أكثر في حياتنا ومجتمعاتنا.</li></ul><p>هذا الفيديو هو فرصتك لفهم البنية الأساسية للعالم الرقمي اللي بنعتمد عليه كل يوم.</p>"
+},
+
+      {
+  "id": 3,
+  "title": "فيديو: مدخل إلى الأمن الرقمي وحماية البيانات",
+  "type": "youtube",
+  "description": "الحلقة الثالثة من سلسلة مقدمة في تكنولوجيا المعلومات مع شهد أبو سعد، نتعرف فيها على أساسيات الأمن الرقمي وأهمية حماية بياناتنا.",
+  "thumbnail": "https://i.ytimg.com/vi/ynKE737_8OA/maxresdefault.jpg",
+  "videoId": "ynKE737_8OA",
+  "audioUrl": "https://raw.githubusercontent.com/kanawattown-a11y/edu/e06af05005905048b174e3d80f279be0c16aac0f/S3.mp3",
+
+  "content": "<h1>مدخل إلى الأمن الرقمي وحماية البيانات</h1><p>في هذه الحلقة الثالثة من سلسلة <strong>مقدمة في تكنولوجيا المعلومات</strong>، تأخذنا <strong>شهد أبو سعد</strong> في جولة لفهم أساسيات <strong>الأمن الرقمي</strong> وكيفية حماية بياناتنا الشخصية.</p><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/ynKE737_8OA\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe><p>يركز الفيديو على أهمية حماية المعلومات الشخصية والعملية في عالمنا الرقمي الحديث، ويوضح دور الأمن الرقمي في حياتنا اليومية.</p><h2>ماذا ستتعلم في هذا الفيديو؟</h2><ul><li><strong>مفهوم الأمن الرقمي:</strong> ولماذا يعتبر ضروريًا لكل مستخدم للإنترنت.</li><li><strong>أهمية البيانات:</strong> وكيفية الحفاظ عليها من الاختراق أو الضياع.</li><li><strong>النسخ الاحتياطي:</strong> دوره في حماية ملفاتنا وصورنا من الفقدان.</li><li><strong>تأمين كلمات المرور:</strong> نصائح لاختيار كلمات مرور قوية وآمنة.</li></ul><p>هذا الفيديو هو دليلك الأولي لفهم طرق حماية نفسك وبياناتك في العالم الرقمي.</p>"
 }
+
 
 
      
@@ -46,6 +59,7 @@ const db = {
 function findLessonById(id ) {
     return db.home.items.find(item => item.id === id);
 }
+
 
 
 
