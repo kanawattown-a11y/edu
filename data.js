@@ -39,11 +39,22 @@ const db = {
   "audioUrl": "https://raw.githubusercontent.com/kanawattown-a11y/edu/e06af05005905048b174e3d80f279be0c16aac0f/S3.mp3",
 
   "content": "<h1>مدخل إلى الأمن الرقمي وحماية البيانات</h1><p>في هذه الحلقة الثالثة من سلسلة <strong>مقدمة في تكنولوجيا المعلومات</strong>، تأخذنا <strong>شهد أبو سعد</strong> في جولة لفهم أساسيات <strong>الأمن الرقمي</strong> وكيفية حماية بياناتنا الشخصية.</p><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/ynKE737_8OA\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe><p>يركز الفيديو على أهمية حماية المعلومات الشخصية والعملية في عالمنا الرقمي الحديث، ويوضح دور الأمن الرقمي في حياتنا اليومية.</p><h2>ماذا ستتعلم في هذا الفيديو؟</h2><ul><li><strong>مفهوم الأمن الرقمي:</strong> ولماذا يعتبر ضروريًا لكل مستخدم للإنترنت.</li><li><strong>أهمية البيانات:</strong> وكيفية الحفاظ عليها من الاختراق أو الضياع.</li><li><strong>النسخ الاحتياطي:</strong> دوره في حماية ملفاتنا وصورنا من الفقدان.</li><li><strong>تأمين كلمات المرور:</strong> نصائح لاختيار كلمات مرور قوية وآمنة.</li></ul><p>هذا الفيديو هو دليلك الأولي لفهم طرق حماية نفسك وبياناتك في العالم الرقمي.</p>"
+},
+
+      {
+  "id": 4,
+  "title": "فيديو: الذكاء الاصطناعي والتعلم الآلي – كيف تتعلم الآلة مثل الإنسان؟",
+  "type": "youtube",
+  "description": "الحلقة الرابعة من سلسلة مقدمة في تكنولوجيا المعلومات مع شهد أبو سعد، نتعرف فيها على مفهوم الذكاء الاصطناعي والتعلم الآلي وكيف تتعلم الآلة من البيانات.",
+  "thumbnail": "https://i.ytimg.com/vi/EG6wFzXS9vY/maxresdefault.jpg",
+  "videoId": "EG6wFzXS9vY",
+  "audioUrl": "https://raw.githubusercontent.com/kanawattown-a11y/edu/main/S4.mp3",
+
+  "content": "<h1>الذكاء الاصطناعي والتعلم الآلي – كيف تتعلم الآلة مثل الإنسان؟</h1><p>في هذه الحلقة الرابعة من سلسلة <strong>مقدمة في تكنولوجيا المعلومات</strong>، تقدم لنا <strong>شهد أبو سعد</strong> شرحًا مبسطًا لعالم <strong>الذكاء الاصطناعي (AI)</strong> و<strong>التعلم الآلي (Machine Learning)</strong> وكيف أصبحت الآلات قادرة على التعلم واتخاذ القرارات.</p><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/VIDEO_ID\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe><p>يشرح الفيديو كيف يستطيع الذكاء الاصطناعي تحليل البيانات والتعلم منها دون برمجة مباشرة، مما يجعله جزءًا أساسيًا من مستقبل التكنولوجيا.</p><h2>ماذا ستتعلم في هذا الفيديو؟</h2><ul><li><strong>ما هو الذكاء الاصطناعي؟</strong> وكيف يساعد الأجهزة على “الفهم” واتخاذ القرارات.</li><li><strong>ما هو التعلم الآلي؟</strong> وكيف تتعلم الآلة من البيانات لتتحسن مع الوقت.</li><li><strong>مفهوم التدريب:</strong> كيف يتم تدريب النماذج لتتعرف على الأنماط وتستجيب بدقة.</li><li><strong>أمثلة من الحياة اليومية:</strong> مثل المساعدات الذكية، الترجمة التلقائية، والتوصيات الرقمية.</li></ul><p>هذا الفيديو يقدم مدخلًا سهلًا لعالم الذكاء الاصطناعي ويكشف كيف أصبح جزءًا من حياتنا اليومية دون أن نشعر.</p>"
 }
 
 
-
-     
+   
     ]
   },
   "flashcards": {
@@ -59,6 +70,7 @@ const db = {
 function findLessonById(id ) {
     return db.home.items.find(item => item.id === id);
 }
+
 
 
 
